@@ -12,6 +12,11 @@ interface LocationState {
   initialMessage?: string;
 }
 
+interface DomElement {
+  position: number;
+  element: React.ReactNode;
+}
+
 const SAMPLE_CONVERSATIONS = [
   {
     id: 1,
@@ -65,11 +70,11 @@ const ChatPage = () => {
     'search' | 'file' | 'terminal'
   >('search');
   const [messages, setMessages] = useState<
-    Array<{ type: 'user' | 'assistant'; content: string }>
+    Array<{ type: 'user' | 'assistant'; content: React.ReactNode }>
   >([]);
 
   const [isTyping, setIsTyping] = useState(false);
-  const [currentText, setCurrentText] = useState('');
+  const [currentContent, setCurrentContent] = useState<React.ReactNode[]>([]);
   const [conversations, setConversations] = useState(SAMPLE_CONVERSATIONS);
   const [activeConversation, setActiveConversation] = useState(() => {
     if (state?.initialMessage) {
@@ -88,17 +93,37 @@ const ChatPage = () => {
     }
   }, []);
 
-  const streamText = async (text: string) => {
+  const streamText = async (
+    text: string,
+    domArr: DomElement[] = []
+  ): Promise<React.ReactNode[]> => {
     setIsTyping(true);
-    setCurrentText('');
+    setCurrentContent([]);
+    let currentText = '';
+    let domIndex = 0;
+    const finalContent: React.ReactNode[] = [];
 
     for (let i = 0; i < text.length; i++) {
-      await new Promise((resolve) => setTimeout(resolve, 30));
-      setCurrentText((prev) => prev + text[i]);
+      // Append characters one by one
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      // currentText += text[i];
+      finalContent.push(<span key={`char-${i}`}>{text[i]}</span>);
+      setCurrentContent([...finalContent]);
+
+      // Add DOM elements at the specified positions
+      if (domIndex < domArr.length && domArr[domIndex].position === i) {
+        finalContent.push(
+          <React.Fragment key={`dom-${domIndex}`}>
+            {domArr[domIndex].element}
+          </React.Fragment>
+        );
+        setCurrentContent([...finalContent]);
+        domIndex++;
+      }
     }
 
     setIsTyping(false);
-    return text;
+    return finalContent;
   };
 
   const handleToolClick = (toolType: 'search' | 'file' | 'terminal') => {
@@ -116,36 +141,58 @@ const ChatPage = () => {
       messages: newMessages,
     }));
 
-    const responses = [
-      "I'm analyzing your request. Here's what I found:\n\n" +
-        '1. Searching for relevant information...\n' +
-        '2. Creating necessary files...\n' +
-        '3. Running analysis...',
-
-      "Let me help you with that. I'll need to:\n\n" +
-        '1. Check the current context\n' +
-        '2. Execute some commands\n' +
-        '3. Generate appropriate files',
-
-      "I understand your request. Here's my plan:\n\n" +
-        '1. Analyze requirements\n' +
-        '2. Search documentation\n' +
-        '3. Prepare implementation',
+    const response =
+      "I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:\n\n";
+    const domArr: DomElement[] = [
+      {
+        position: 40,
+        element: (
+          <button
+            onClick={() => handleToolClick('search')}
+            className="flex items-center gap-2 px-3 py-1.5 text-sm bg-white border rounded-lg hover:bg-gray-50 transition-colors my-2"
+          >
+            <Menu size={16} />
+            <span>搜索上下文</span>
+          </button>
+        ),
+      },
+      {
+        position: 60,
+        element: (
+          <button
+            onClick={() => handleToolClick('terminal')}
+            className="flex items-center gap-2 px-3 py-1.5 text-sm bg-white border rounded-lg hover:bg-gray-50 transition-colors my-2"
+          >
+            <Menu size={16} />
+            <span>执行命令</span>
+          </button>
+        ),
+      },
+      {
+        position: 90,
+        element: (
+          <button
+            onClick={() => handleToolClick('file')}
+            className="flex items-center gap-2 px-3 py-1.5 text-sm bg-white border rounded-lg hover:bg-gray-50 transition-colors my-2"
+          >
+            <Menu size={16} />
+            <span>创建文件</span>
+          </button>
+        ),
+      },
     ];
 
-    const response = responses[Math.floor(Math.random() * responses.length)];
-    const streamedText = await streamText(response);
+    const streamedContent = await streamText(response, domArr);
 
     const finalMessages = [
       ...newMessages,
-      { type: 'assistant' as const, content: streamedText },
+      { type: 'assistant' as const, content: streamedContent },
     ];
     setActiveConversation((prev) => ({
       ...prev,
       messages: finalMessages,
     }));
 
-    // Update conversations list
     setConversations((prev) =>
       prev.map((conv) =>
         conv.id === activeConversation.id
@@ -214,7 +261,7 @@ const ChatPage = () => {
             <div className="text-gray-500">
               <ChatMessage
                 type="assistant"
-                content={currentText + '▋'}
+                content={<>{currentContent}</>}
                 onToolClick={handleToolClick}
               />
             </div>
