@@ -151,17 +151,148 @@ const ChatPage = () => {
     }));
 
     const response =
-      "I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:\n\n";
+      "您好！我会帮您分析腾讯公司。我将收集相关信息，包括公司概况、业务模式、财务状况、市场地位和发展前景等方面，为您提供一个全面的分析。请稍等片刻，我马上开始收集信息。\nI understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:I understand your request. Here's my plan:\n\n";
     const domArr: DomElement[] = [
       {
-        position: 40,
+        position: 80,
         element: (
           <button
             onClick={() => handleToolClick('search')}
-            className="flex items-center gap-2 px-3 py-1.5 text-sm bg-white border rounded-lg hover:bg-gray-50 transition-colors my-2"
+            className="flex rounded-[15px] items-center gap-2 px-[10px] py-[3px] border border-[var(--border-light)] bg-[var(--fill-tsp-gray-main)] max-w-full clickable hover:bg-[var(--fill-tsp-gray-dark)] dark:hover:bg-white/[0.02] my-4"
+            data-event-id="PYquLbdNTWi4yMCYRZlUDh"
           >
-            <Menu size={16} />
-            <span>搜索上下文</span>
+            <div className="w-[16px] inline-flex items-center text-[var(--text-primary)]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="21"
+                height="21"
+                viewBox="0 0 19 18"
+                fill="none"
+                style={{ minWidth: '21px', minHeight: '21px' }}
+              >
+                <g filter="url(#filter0_ii_1527_83590)">
+                  <path
+                    d="M2 4.7C2 3.20883 3.20883 2 4.7 2H13.3C14.7912 2 16 3.20883 16 4.7V13.3C16 14.7912 14.7912 16 13.3 16H4.7C3.20883 16 2 14.7912 2 13.3V4.7Z"
+                    fill="url(#paint0_linear_1527_83590)"
+                  ></path>
+                </g>
+                <path
+                  d="M2.42857 4.7C2.42857 3.44552 3.44552 2.42857 4.7 2.42857H13.3C14.5545 2.42857 15.5714 3.44552 15.5714 4.7V13.3C15.5714 14.5545 14.5545 15.5714 13.3 15.5714H4.7C3.44552 15.5714 2.42857 14.5545 2.42857 13.3V4.7Z"
+                  stroke="#B9B9B7"
+                  strokeWidth="0.857143"
+                ></path>
+                <circle
+                  cx="8.625"
+                  cy="8.625"
+                  r="3"
+                  stroke="#535350"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></circle>
+                <path
+                  d="M10.875 10.875L12.375 12.375"
+                  stroke="#535350"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
+                <defs>
+                  <filter
+                    id="filter0_ii_1527_83590"
+                    x="1.5"
+                    y="1.5"
+                    width="15"
+                    height="15"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood
+                      flood-opacity="0"
+                      result="BackgroundImageFix"
+                    ></feFlood>
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="BackgroundImageFix"
+                      result="shape"
+                    ></feBlend>
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    ></feColorMatrix>
+                    <feOffset dx="1" dy="1"></feOffset>
+                    <feGaussianBlur stdDeviation="0.25"></feGaussianBlur>
+                    <feComposite
+                      in2="hardAlpha"
+                      operator="arithmetic"
+                      k2="-1"
+                      k3="1"
+                    ></feComposite>
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0"
+                    ></feColorMatrix>
+                    <feBlend
+                      mode="normal"
+                      in2="shape"
+                      result="effect1_innerShadow_1527_83590"
+                    ></feBlend>
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    ></feColorMatrix>
+                    <feOffset dx="-1" dy="-1"></feOffset>
+                    <feGaussianBlur stdDeviation="0.25"></feGaussianBlur>
+                    <feComposite
+                      in2="hardAlpha"
+                      operator="arithmetic"
+                      k2="-1"
+                      k3="1"
+                    ></feComposite>
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"
+                    ></feColorMatrix>
+                    <feBlend
+                      mode="normal"
+                      in2="effect1_innerShadow_1527_83590"
+                      result="effect2_innerShadow_1527_83590"
+                    ></feBlend>
+                  </filter>
+                  <linearGradient
+                    id="paint0_linear_1527_83590"
+                    x1="9"
+                    y1="2"
+                    x2="9"
+                    y2="16"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stop-color="white" stop-opacity="0"></stop>
+                    <stop offset="1" stop-opacity="0.16"></stop>
+                  </linearGradient>
+                </defs>
+              </svg>{' '}
+            </div>
+            <div className="flex-1 h-full min-w-0 flex">
+              <div className="inline-flex items-center h-full rounded-full text-[14px] text-[var(--text-secondary)] max-w-[100%]">
+                <div
+                  className="max-w-[100%] text-ellipsis overflow-hidden whitespace-nowrap text-[13px]"
+                  title="正在搜索腾讯公司 公司简介 股票代码"
+                >
+                  <div className="flex items-center">
+                    正在搜索
+                    <span className="flex-1 min-w-0 rounded-[6px] px-1 ml-1 relative top-[0px] text-[12px] font-mono max-w-full text-ellipsis overflow-hidden whitespace-nowrap text-[var(--text-tertiary)]">
+                      <code>腾讯公司 公司简介 股票代码</code>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </button>
         ),
       },
