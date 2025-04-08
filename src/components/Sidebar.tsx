@@ -33,6 +33,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           transition: 'width 0.28s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
       >
+
         <div className="absolute left-0 top-0 w-[300px] p-4 bg-[var(--background-gray-main)] flex items-center gap-2">
           <div className="relative flex">
             <div
