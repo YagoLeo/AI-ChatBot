@@ -1114,7 +1114,15 @@ const ChatPage = () => {
                         data-page-width={pageWidth} // 添加数据属性方便调试
                       >
                         <div
-                          className={`relative flex flex-col h-full flex-1 mx-10 w-full max-w-[768px] min-w-[390px] px-5 ml-[30vw]`}
+                          className={`relative flex flex-col h-full flex-1 mx-10 w-full max-w-[768px] min-w-[390px] px-5 ${
+                            sidebarOpen === false && toolPanelOpen === true
+                              ? 'ml-[10vw]'
+                              : 'ml-[30vw]'
+                          } ${
+                            sidebarOpen === true &&
+                            toolPanelOpen === true &&
+                            'ml-[20vw]'
+                          }`}
                         >
                           <div className="sticky top-0 z-10 bg-[var(--background-gray-main)] flex-shrink-0 flex flex-row items-center justify-between pt-3 pb-1">
                             <div className="flex w-full flex-col gap-[4px]">
